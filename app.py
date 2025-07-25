@@ -67,6 +67,9 @@ def index():
 
 @app.route("/escuchar", methods=["POST"])
 def escuchar():
+    if os.getenv("FLASK_ENV") == "production":
+        return jsonify({"mensaje": None})  # Evita usar micrófono en producción
+
     recognizer = sr.Recognizer()
     with sr.Microphone() as source:
         try:
@@ -76,6 +79,7 @@ def escuchar():
             return jsonify({"mensaje": texto})
         except Exception:
             return jsonify({"mensaje": None})
+
 
 @app.route("/interactuar", methods=["POST"])
 def interactuar():
