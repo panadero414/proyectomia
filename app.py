@@ -11,6 +11,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText 
 from email.mime.application import MIMEApplication
 from dotenv import load_dotenv
+import traceback
 
 
 app = Flask(__name__)
@@ -85,7 +86,9 @@ def interactuar():
         texto_respuesta = respuesta["choices"][0]["message"]["content"]
         archivo_respuestas.write(f"Niño: {mensaje}\nMIA: {texto_respuesta}\n\n")
         return jsonify({"respuesta": texto_respuesta})
-    except Exception:
+    except Exception as e:
+        print("Error en /interactuar:", e)
+        traceback.print_exc()
         return jsonify({"respuesta": "Hubo un problema al procesar la respuesta."})
 
 @app.route('/reiniciar', methods=['POST'])
