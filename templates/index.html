@@ -11,13 +11,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand+SC:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
-    <a href="https://mechrobotix.com" class="btn-volver">Volver al menú principal</a>
     <div class="container">
         <div class="seccion-vacia"></div>
         <div class="seccion-interaccion">
             <div class="seccion-avatar">
                 <img id="robot" src="{{ url_for('static', filename='images/robot-neutral.png') }}" alt="MIA">
                 <button id="btn-iniciar" onclick="iniciarConversacion()">Iniciar Conversación</button>
+                <a href="https://mechrobotix.com" class="btn-volver">Volver al menú principal</a>
                 <input type="email" id="email" placeholder="E-MAIL">
             </div>
             <div class="seccion-vinedas">
