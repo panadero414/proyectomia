@@ -10,6 +10,7 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText 
 from email.mime.application import MIMEApplication
+from dotenv import load_dotenv
 
 
 app = Flask(__name__)
@@ -17,10 +18,10 @@ app = Flask(__name__)
 # Configuración del servidor SMTP
 SMTP_SERVER = 'smtp.gmail.com'
 SMTP_PORT = 587
-SMTP_USERNAME = 'bullyguardmia@gmail.com'       # ⚠️ Reemplaza con tu correo real
-SMTP_PASSWORD = 'wvmq qjfi tmei wtcv'     # ⚠️ Reemplaza con tu contraseña o App Password
-
-openai.api_key = "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"
+load_dotenv()  #vars definidas en .env
+openai.api_key = os.getenv("OPENAI_API_KEY")
+SMTP_USERNAME   = os.getenv("SMTP_USERNAME")
+SMTP_PASSWORD   = os.getenv("SMTP_PASSWORD")
 
 Edad = ""
 Animal_favorito = ""
